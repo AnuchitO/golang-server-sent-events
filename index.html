@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server sent event</title>
+  <script type="text/javascript">
+    if (typeof(EventSource) !== "undefined") {
+      var source = new EventSource("http://localhost:8765/sse", {});
+      source.onmessage = function(event) {
+        document.getElementById("result").innerHTML += event.data + "<br/>";
+      };
+    }else {
+        document.getElementById("result").innerHTML = "browser not support server-sent events";
+    }
+  </script>
+  </head>
+  <body>
+  <h1>Getting server updates</h1>
+    <div id="result"></div>
+  </body>
+</html>
